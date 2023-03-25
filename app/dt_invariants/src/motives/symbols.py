@@ -1,4 +1,5 @@
 from sympy import Symbol, Rational
+from .types import Motive
 
-L = Symbol("\U0001D543")
-R = L ** Rational(1, 2)
+L: Motive = Symbol("\U0001D543")
+R: Motive = L ** Rational(1, 2)
