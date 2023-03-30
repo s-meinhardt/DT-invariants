@@ -5,7 +5,7 @@ from ..categories.slicing import Slicing
 from ..linear_algebra.central_charge import CentralCharge
 from ..linear_algebra.cone import Cone
 from ..linear_algebra.dimension_vector import DimensionVector
-from ..linear_algebra.scalar_product import ScalarProduct
+from ..linear_algebra.pairing import Pairing
 from ..motives.motive_of_semistables import MotiveOfSemistables
 from ..motives.motivic_series import MotivicSeries
 
@@ -16,7 +16,7 @@ class StabilityCondition:
         self.abelian_category = abelian_category
         self.charge: CentralCharge = charge if charge else CentralCharge(real=self.rank * [0], imag=self.rank * [1])
 
-        self.pairing: ScalarProduct = abelian_category.euler_pairing
+        self.pairing: Pairing = abelian_category.euler_pairing
         self.motive_of_all_objects: MotivicSeries = abelian_category.motive_of_objects
         self.cone: Cone = self.motive_of_all_objects.cone
         self._semistables: Optional[Slicing] = None

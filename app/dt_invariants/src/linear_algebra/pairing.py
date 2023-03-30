@@ -3,7 +3,7 @@ from typing import Optional
 from .dimension_vector import DimensionVector
 
 
-class ScalarProduct:
+class Pairing:
     def __init__(self, rank: int, coeff_matrix: Optional[dict[tuple[int, int], int]] = None) -> None:
         self.rank = rank
         if not coeff_matrix:

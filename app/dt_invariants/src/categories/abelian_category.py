@@ -2,15 +2,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from ..linear_algebra.scalar_product import ScalarProduct
+from ..linear_algebra.pairing import Pairing
 from ..motives.motivic_series import MotivicSeries
 from ..motives.symbols import R
 
 
 class AbelianCategory:
-    def __init__(
-        self, motive_of_objects: MotivicSeries, euler_pairing: ScalarProduct, name: Optional[str] = None
-    ) -> None:
+    def __init__(self, motive_of_objects: MotivicSeries, euler_pairing: Pairing, name: Optional[str] = None) -> None:
         assert (
             euler_pairing.rank == motive_of_objects.rank
         ), "The motivic series and the euler pairing must have the same rank"

@@ -1,7 +1,7 @@
 from typing import Optional, cast
 
 from ..linear_algebra.phase import Phase
-from ..linear_algebra.scalar_product import ScalarProduct
+from ..linear_algebra.pairing import Pairing
 from ..motives.dt_invariants import DTInvariants
 from ..motives.motivic_series import MotivicSeries
 from ..motives.sliced_motive import SlicedMotive
@@ -9,9 +9,7 @@ from .abelian_category import AbelianCategory
 
 
 class Slicing:
-    def __init__(
-        self, euler_pairing: ScalarProduct, motive_of_objects: SlicedMotive, name: Optional[str] = None
-    ) -> None:
+    def __init__(self, euler_pairing: Pairing, motive_of_objects: SlicedMotive, name: Optional[str] = None) -> None:
         assert (
             euler_pairing.rank == motive_of_objects.rank
         ), "euler pairing and motive of objects must have the same rank"

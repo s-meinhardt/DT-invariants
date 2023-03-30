@@ -5,7 +5,7 @@ from .linear_algebra.central_charge import CentralCharge  # noqa: F401
 from .linear_algebra.cone import Cone  # noqa: F401
 from .linear_algebra.dimension_vector import DimensionVector  # noqa: F401
 from .linear_algebra.phase import Phase  # noqa: F401
-from .linear_algebra.scalar_product import ScalarProduct  # noqa: F401
+from .linear_algebra.pairing import Pairing  # noqa: F401
 from .linear_algebra.standard_cone import StandardCone  # noqa: F401
 from .motives.dt_invariants import DTInvariants  # noqa: F401
 from .motives.exp import Exp  # noqa: F401

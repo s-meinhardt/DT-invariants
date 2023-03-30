@@ -6,7 +6,7 @@ import sympy
 
 from ..linear_algebra.dimension_vector import DimensionVector
 from ..linear_algebra.phase import Phase
-from ..linear_algebra.scalar_product import ScalarProduct
+from ..linear_algebra.pairing import Pairing
 from .log import Log
 from .motivic_series import MotivicSeries
 from .sliced_motive import SlicedMotive
@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 class DTInvariants(SlicedMotive):
     def __init__(self, slicing: Slicing, name: Optional[str] = None) -> None:
         self.slicing = slicing
-        self.euler_pairing: ScalarProduct = slicing.euler_pairing
+        self.euler_pairing: Pairing = slicing.euler_pairing
         super().__init__(
             rank=slicing.rank,
             name=name if name else f"DT({slicing.name})",
