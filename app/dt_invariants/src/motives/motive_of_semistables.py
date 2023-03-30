@@ -1,12 +1,15 @@
 from __future__ import annotations
+
+import math
 from typing import TYPE_CHECKING, cast
+
+import sympy
+
+from ..linear_algebra.cone import Cone
+from ..linear_algebra.dimension_vector import DimensionVector
+from ..linear_algebra.phase import Phase
 from .motivic_series import MotivicSeries
 from .sliced_motive import SlicedMotive
-import math
-import sympy
-from ..linear_algebra.dimension_vector import DimensionVector
-from ..linear_algebra.cone import Cone
-from ..linear_algebra.phase import Phase
 from .symbols import L
 from .types import FractionalMotive
 

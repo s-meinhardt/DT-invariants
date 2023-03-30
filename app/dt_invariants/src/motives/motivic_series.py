@@ -1,10 +1,13 @@
 from __future__ import annotations
-from typing import Optional, Callable
-from ..linear_algebra.dimension_vector import DimensionVector
+
+from typing import Callable, Optional
+
+import sympy
+
 from ..linear_algebra.cone import Cone
+from ..linear_algebra.dimension_vector import DimensionVector
 from .graded_motive import GradedMotive
 from .types import FractionalMotive
-import sympy
 
 
 class MotivicSeries(GradedMotive):

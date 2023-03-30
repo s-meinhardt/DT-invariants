@@ -1,10 +1,11 @@
 from typing import Optional, cast
+
+from ..categories.abelian_category import AbelianCategory
 from ..linear_algebra.scalar_product import ScalarProduct
 from ..linear_algebra.standard_cone import StandardCone
+from ..motives.gl import GL
 from ..motives.motivic_series import MotivicSeries
 from ..motives.symbols import L
-from ..motives.gl import GL
-from ..categories.abelian_category import AbelianCategory
 
 
 class Quiver:

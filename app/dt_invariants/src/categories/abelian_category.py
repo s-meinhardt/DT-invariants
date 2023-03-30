@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 from typing import Optional, cast
+
+from ..linear_algebra.scalar_product import ScalarProduct
 from ..motives.motivic_series import MotivicSeries
 from ..motives.symbols import R
-from ..linear_algebra.scalar_product import ScalarProduct
 
 
 class AbelianCategory:

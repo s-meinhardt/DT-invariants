@@ -1,10 +1,11 @@
-from typing import Optional, Callable, cast
-from ..linear_algebra.dimension_vector import DimensionVector
+from typing import Callable, Optional, cast
+
 from ..linear_algebra.cone import Cone
+from ..linear_algebra.dimension_vector import DimensionVector
 from ..linear_algebra.phase import Phase
-from .types import FractionalMotive
 from .graded_motive import GradedMotive
 from .motivic_series import MotivicSeries
+from .types import FractionalMotive
 
 
 class SlicedMotive(GradedMotive):

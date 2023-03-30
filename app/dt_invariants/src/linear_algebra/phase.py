@@ -1,7 +1,8 @@
 from __future__ import annotations
+
 from cmath import phase
-from math import pi
 from dataclasses import dataclass
+from math import pi
 
 
 @dataclass(init=True, frozen=True)

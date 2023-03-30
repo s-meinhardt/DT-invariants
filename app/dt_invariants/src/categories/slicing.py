@@ -1,10 +1,11 @@
 from typing import Optional, cast
-from ..linear_algebra.scalar_product import ScalarProduct
+
 from ..linear_algebra.phase import Phase
-from ..motives.sliced_motive import SlicedMotive
-from .abelian_category import AbelianCategory
+from ..linear_algebra.scalar_product import ScalarProduct
 from ..motives.dt_invariants import DTInvariants
 from ..motives.motivic_series import MotivicSeries
+from ..motives.sliced_motive import SlicedMotive
+from .abelian_category import AbelianCategory
 
 
 class Slicing:

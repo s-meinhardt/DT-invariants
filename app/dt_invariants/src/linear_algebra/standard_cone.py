@@ -1,4 +1,5 @@
 from typing import Optional
+
 from .cone import Cone
 from .dimension_vector import DimensionVector
 

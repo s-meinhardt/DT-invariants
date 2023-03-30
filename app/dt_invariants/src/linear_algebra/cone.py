@@ -1,5 +1,7 @@
 from __future__ import annotations
-from typing import Optional, Callable, Generator
+
+from typing import Callable, Generator, Optional
+
 from .dimension_vector import DimensionVector
 
 

@@ -1,12 +1,13 @@
-from typing import Optional, Generator, cast
-from ..linear_algebra.dimension_vector import DimensionVector
-from ..linear_algebra.scalar_product import ScalarProduct
+from typing import Generator, Optional, cast
+
+from ..categories.abelian_category import AbelianCategory
+from ..categories.slicing import Slicing
 from ..linear_algebra.central_charge import CentralCharge
 from ..linear_algebra.cone import Cone
-from ..categories.slicing import Slicing
-from ..categories.abelian_category import AbelianCategory
-from ..motives.motivic_series import MotivicSeries
+from ..linear_algebra.dimension_vector import DimensionVector
+from ..linear_algebra.scalar_product import ScalarProduct
 from ..motives.motive_of_semistables import MotiveOfSemistables
+from ..motives.motivic_series import MotivicSeries
 
 
 class StabilityCondition:

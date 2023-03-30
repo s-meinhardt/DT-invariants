@@ -1,5 +1,7 @@
 from __future__ import annotations
-from typing import Optional, Callable
+
+from typing import Callable, Optional
+
 from ..linear_algebra.dimension_vector import DimensionVector
 from .types import FractionalMotive
 

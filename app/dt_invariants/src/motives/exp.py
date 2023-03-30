@@ -1,9 +1,11 @@
-from sympy import Integer, Rational, factor, divisors
-from math import prod, factorial, gcd
+from math import factorial, gcd, prod
+
+from sympy import Integer, Rational, divisors, factor
+
+from ..linear_algebra.dimension_vector import DimensionVector
 from .motivic_series import MotivicSeries
 from .symbols import R
 from .types import FractionalMotive
-from ..linear_algebra.dimension_vector import DimensionVector
 
 
 class Exp(MotivicSeries):

@@ -1,9 +1,11 @@
 from __future__ import annotations
+
 from math import prod
-from .types import Motive
-from .symbols import L
-from ..linear_algebra.dimension_vector import DimensionVector
 from typing import cast
+
+from ..linear_algebra.dimension_vector import DimensionVector
+from .symbols import L
+from .types import Motive
 
 
 class GL(Motive):

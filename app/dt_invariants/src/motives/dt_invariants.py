@@ -1,14 +1,17 @@
 from __future__ import annotations
-from typing import Optional, TYPE_CHECKING
+
+from typing import TYPE_CHECKING, Optional
+
+import sympy
+
+from ..linear_algebra.dimension_vector import DimensionVector
+from ..linear_algebra.phase import Phase
+from ..linear_algebra.scalar_product import ScalarProduct
+from .log import Log
 from .motivic_series import MotivicSeries
 from .sliced_motive import SlicedMotive
-from .log import Log
-from ..linear_algebra.phase import Phase
-from ..linear_algebra.dimension_vector import DimensionVector
-from ..linear_algebra.scalar_product import ScalarProduct
 from .symbols import L, R
 from .types import FractionalMotive
-import sympy
 
 if TYPE_CHECKING:
     from ..categories.slicing import Slicing
