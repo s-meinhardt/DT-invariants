@@ -9,9 +9,6 @@ class DimensionVector(tuple):
             vector = super(DimensionVector, cls).__new__(cls, args[0])
         else:
             vector = super(DimensionVector, cls).__new__(cls, args)
-        assert all(
-            map(lambda x: isinstance(x, int) and x >= 0, vector)
-        ), f"Coordinates of {vector} must be non-negative integers!"
         return vector
 
     @classmethod
