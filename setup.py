@@ -17,12 +17,12 @@ setup(
     license="GNU GPLv3",
     classifiers=[
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.9",
         "Operating System :: OS Independent",
     ],
     install_requires=["sympy >= 1.11.1"],
     extras_require={
         "dev": ["pytest>=7.0", "twine>=4.0.2"],
     },
-    python_requires=">=3.10",
+    python_requires=">=3.9",
 )

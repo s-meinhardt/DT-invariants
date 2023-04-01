@@ -1,4 +1,4 @@
-from typing import Callable, Optional, cast
+from typing import Callable, Optional, Union, cast
 
 from ..linear_algebra.cone import Cone
 from ..linear_algebra.dimension_vector import DimensionVector
@@ -6,6 +6,9 @@ from ..linear_algebra.phase import Phase
 from .graded_motive import GradedMotive
 from .motivic_series import MotivicSeries
 from .types import FractionalMotive
+
+VectorOrPhase = Union[DimensionVector, Phase]
+MotiveOrSeries = Union[FractionalMotive, MotivicSeries]
 
 
 class SlicedMotive(GradedMotive):
@@ -19,9 +22,9 @@ class SlicedMotive(GradedMotive):
         self._cone_at = cone_at
         self._phase_of = phase_of
         super().__init__(rank=rank, name=name)
-        self._cache: dict[DimensionVector | Phase, FractionalMotive | MotivicSeries] = {}  # type: ignore[assignment]
+        self._cache: dict[VectorOrPhase, MotiveOrSeries] = {}  # type: ignore[assignment]
 
-    def __call__(self, arg: DimensionVector | Phase) -> FractionalMotive | MotivicSeries:  # type: ignore[override]
+    def __call__(self, arg: VectorOrPhase) -> MotiveOrSeries:  # type: ignore[override]
         try:
             return self._cache[arg]
         except KeyError:
