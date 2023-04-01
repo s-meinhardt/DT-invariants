@@ -5,7 +5,7 @@ with open("app/README.md", "r") as f:
 
 setup(
     name="dt-invariants",
-    version="0.1.0",
+    version="0.2.0",
     description="A set of tools to compute DT invariants of quivers",
     package_dir={"": "app"},
     packages=find_packages(where="app"),
