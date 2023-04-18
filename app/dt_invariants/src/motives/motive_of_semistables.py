@@ -31,9 +31,9 @@ class MotiveOfSemistables(SlicedMotive):
         )
 
     def cone_at(self, phi: Phase) -> Cone:
-        if phi.branch % 2:
+        if not phi.is_in_upper_half_plane():
             # we take the cone at phase + 1 and shift it back
-            return self.cone_at(phi[1])[-1]
+            return self.cone_at(phi + 1)[-1]
 
         def is_contained(d: DimensionVector) -> bool:
             return self.cone_of_all_objects.contains(d) and phi.covers(self.stab_cond.charge(d))

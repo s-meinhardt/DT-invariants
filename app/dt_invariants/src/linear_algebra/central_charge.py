@@ -38,7 +38,4 @@ class CentralCharge:
         return -self._real(d) / self._imag(d)
 
     def phase(self, d: DimensionVector) -> Phase:
-        if self._imag(d) > 0 or self._imag(d) == 0 and self._real(d) < 0:
-            return Phase(real=self._real(d), imag=self._imag(d), branch=0)
-        else:
-            return Phase(real=self._real(d), imag=self._imag(d), branch=1)
+        return Phase.of(z=(self._real(d), self._imag(d)))
