@@ -2,7 +2,7 @@ from typing import Optional, cast
 
 from ..linear_algebra.phase import Phase
 from ..linear_algebra.pairing import Pairing
-from ..motives.dt_invariants import DTInvariants
+from ..motives.dt_invariant import DTInvariant
 from ..motives.motivic_series import MotivicSeries
 from ..motives.sliced_motive import SlicedMotive
 from .abelian_category import AbelianCategory
@@ -40,4 +40,4 @@ class Slicing:
             return cast(SlicedMotive, self._dt_invariants)
 
     def set_dt_invariants(self) -> None:
-        self._dt_invariants = DTInvariants(slicing=self)
+        self._dt_invariants = DTInvariant(slicing=self)

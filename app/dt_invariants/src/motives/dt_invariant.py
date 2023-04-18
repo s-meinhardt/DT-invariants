@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from ..categories.slicing import Slicing
 
 
-class DTInvariants(SlicedMotive):
+class DTInvariant(SlicedMotive):
     def __init__(self, slicing: Slicing, name: Optional[str] = None) -> None:
         self.slicing = slicing
         self.euler_pairing: Pairing = slicing.euler_pairing
