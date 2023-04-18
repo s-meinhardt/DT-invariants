@@ -18,3 +18,4 @@ from .motives.sliced_motive import SlicedMotive  # noqa: F401
 from .motives.symbols import L, R  # noqa: F401
 from .motives.types import FractionalMotive, Motive  # noqa: F401
 from .stability.stability_condition import StabilityCondition  # noqa: F401
+from .version import __version__  # noqa: F401
