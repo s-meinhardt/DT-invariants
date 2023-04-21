@@ -7,8 +7,14 @@ Welcome to DT-Invariants's documentation!
 =========================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
+
+   linear_algebra
+   categories
+   motives 
+   stability 
+   examples 
 
 Indices and tables
 ==================
