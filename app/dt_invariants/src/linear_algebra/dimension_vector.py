@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Sequence
+
+
 from .immutable import Immutable
 
 
@@ -130,10 +132,36 @@ class DimensionVector(Immutable, Sequence):
 
     @classmethod
     def zero(cls, length: int) -> DimensionVector:
+        """A method generating the zero dimension vector of a given length.
+
+        Parameters
+        ----------
+        length : int
+            The length of the requested dimension vector.
+
+        Returns
+        -------
+        DimensionVector
+            The requested zero dimension vector.
+
+        Example
+        -------
+
+        >>> DimensionVector.zero(length=3)
+        (0,0,0)
+
+        """
         return DimensionVector(0 for _ in range(length))
 
     @property
     def is_zero(self) -> bool:
+        """Is this dimension vector zero?
+
+        Returns
+        -------
+        bool
+            Are all coordinates zero?
+        """
         return all(map(lambda x: x == 0, self))
 
     @property
@@ -149,6 +177,25 @@ class DimensionVector(Immutable, Sequence):
         return self + DimensionVector((len(self) - 1) * [0] + [1])
 
     def copy(self) -> DimensionVector:
+        """A method to create a different copy of a dimension vector.
+
+        Returns
+        -------
+        DimensionVector
+            Another copy of the dimension vector.
+
+        Example
+        -------
+
+        >>> d = DimensionVector(1,2)
+        >>> e = d.copy()
+        >>> d == e
+        True
+
+        >>> d is e
+        False
+
+        """
         return DimensionVector(x for x in self)
 
     def __hash__(self) -> int:
@@ -164,12 +211,34 @@ class DimensionVector(Immutable, Sequence):
         assert len(self) == len(
             other
         ), "Both dimension vectors must have the same length!"
+        """A method to add dimension vectors.
+
+        Parameters
+        ----------
+        other : DimensionVector
+            The second summand.
+
+        Returns
+        -------
+        DimensionVector
+            The dimension vector containing the pairwise sums of the coordinates.
+        """
+        assert len(self) == len(
+            other
+        ), "Both dimension vectors must have the same length!"
         return DimensionVector(map(lambda x: x[0] + x[1], zip(self, other)))
 
     def __iadd__(self, other: DimensionVector) -> DimensionVector:
         return self + other
 
     def __neg__(self) -> DimensionVector:
+        """A method returning the negative of a dimension vector.
+
+        Returns
+        -------
+        DimensionVector
+            The dimension vector with the signs of the coordinates swapped.
+        """
         return DimensionVector(-x for x in self)
 
     def __sub__(self, other: DimensionVector) -> DimensionVector:
@@ -179,6 +248,18 @@ class DimensionVector(Immutable, Sequence):
         return self - other
 
     def __mul__(self, factor: int) -> DimensionVector:
+        """A method to multiply a dimension vector with an integer.
+
+        Parameters
+        ----------
+        factor : int
+            The second factor.
+
+        Returns
+        -------
+        DimensionVector
+            The dimension vector with all coordinates scaled by 'factor'.
+        """
         return DimensionVector(map(lambda x: factor * x, self))
 
     def __rmul__(self, factor: int) -> DimensionVector:
