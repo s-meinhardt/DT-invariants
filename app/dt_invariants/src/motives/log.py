@@ -21,7 +21,7 @@ class Log(MotivicSeries):
         ), "coeff of argument at zero dimension vector must be 1"
 
     def _at(self, d: DimensionVector) -> FractionalMotive:
-        if d.is_zero():
+        if d.is_zero:
             return Integer(0)
         return factor(
             self.arg(d)

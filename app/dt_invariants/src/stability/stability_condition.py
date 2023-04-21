@@ -37,15 +37,15 @@ class StabilityCondition:
             assert len(k) == self.rank, f"upper bound dimension vector must have {self.rank} components"
         else:
             k = 2 * d
-        if k.is_zero():
+        if k.is_zero:
             return
         e: DimensionVector = self.cone.pred_of(k, d)
-        if e.is_zero():
+        if e.is_zero:
             return
         r: DimensionVector = d - e
         i: int = 0
         while i < 10_000:
-            if r.is_zero():
+            if r.is_zero:
                 yield {e}, 0
             else:
                 for part, exponent in self.hn_partitions(r, e):
@@ -58,7 +58,7 @@ class StabilityCondition:
                         yield part, exponent
             e = self.cone.pred_of(e, d)
             r = d - e
-            if e.is_zero():
+            if e.is_zero:
                 return
             i += 1
 
