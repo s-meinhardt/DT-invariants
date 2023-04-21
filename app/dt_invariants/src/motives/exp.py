@@ -19,7 +19,7 @@ class Exp(MotivicSeries):
         assert self.arg.at(DimensionVector.zero(self.rank)) == 0, "coeff of argument at zero dimension vector must be 0"
 
     def _at(self, d: DimensionVector) -> FractionalMotive:
-        if d.is_zero():
+        if d.is_zero:
             return Integer(1)
         return factor(
             sum(

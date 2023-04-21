@@ -25,7 +25,7 @@ class Cone:
     def summands(self, d: DimensionVector) -> Generator[DimensionVector, None, None]:
         e = d.copy()
         yield e
-        while not e.is_zero():
+        while not e.is_zero:
             e = self.pred_of(e, d)
             yield e
 
@@ -34,15 +34,15 @@ class Cone:
     ) -> Generator[dict[DimensionVector, int], None, None]:
         if below is None:
             below = 2 * d
-        if below.is_zero():
+        if below.is_zero:
             return
         e = self.pred_of(below, d)
-        if e.is_zero():
+        if e.is_zero:
             return
         q, r = divmod(d, e)
         i = 0
         while i < 10_000:
-            if r.is_zero():
+            if r.is_zero:
                 yield {e: q}
             else:
                 for part in self.partitions(r, below=e):
@@ -52,7 +52,7 @@ class Cone:
                 r += e
             else:
                 e = self.pred_of(e, d)
-                if e.is_zero():
+                if e.is_zero:
                     return
                 q, r = divmod(d, e)
             i += 1

@@ -1,45 +1,69 @@
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Sequence
+from .immutable import Immutable
 
 
-class DimensionVector(tuple):
-    def __new__(cls, *args) -> DimensionVector:
+class DimensionVector(Immutable, Sequence):
+    # __slots__ = ["_coord"]
+
+    def __init__(self, *args) -> None:
         if isinstance(args[0], Iterable):
-            vector = super(DimensionVector, cls).__new__(cls, args[0])
+            object.__setattr__(self, "_coord", tuple(args[0]))
         else:
-            vector = super(DimensionVector, cls).__new__(cls, args)
-        return vector
+            object.__setattr__(self, "_coord", tuple(args))
+        assert all(map(lambda x: isinstance(x, int), self._coord)), "Coordinates must be integers!"
+        super().__init__()
 
     @classmethod
-    def zero(cls, num_vertices: int) -> DimensionVector:
-        return DimensionVector(0 for _ in range(num_vertices))
+    def zero(cls, length: int) -> DimensionVector:
+        return DimensionVector(0 for _ in range(length))
 
-    def __add__(self, other: DimensionVector) -> DimensionVector:  # type: ignore[override]
+    @property
+    def is_zero(self) -> bool:
+        return all(map(lambda x: x == 0, self))
+
+    def copy(self) -> DimensionVector:
+
+        return DimensionVector(x for x in self)
+
+    def __len__(self) -> int:
+        return len(self._coord)
+
+    def __getitem__(self, position: int) -> int:
+        return self._coord[position]
+
+    def __add__(self, other: DimensionVector) -> DimensionVector:
+        assert len(self) == len(other), "Both dimension vectors must have the same length!"
         return DimensionVector(map(lambda x: x[0] + x[1], zip(self, other)))
 
-    def __iadd__(self, other: DimensionVector) -> DimensionVector:  # type: ignore[override]
-        # for idx, x in enumerate(other):
-        #   self[idx] +=x
+    def __iadd__(self, other: DimensionVector) -> DimensionVector:
         return self + other
-
-    def __sub__(self, other: DimensionVector) -> DimensionVector:
-        return DimensionVector(map(lambda x: x[0] - x[1], zip(self, other)))
 
     def __neg__(self) -> DimensionVector:
         return DimensionVector(-x for x in self)
 
-    def __mul__(self, factor: int) -> DimensionVector:  # type: ignore[override]
+    def __sub__(self, other: DimensionVector) -> DimensionVector:
+        return self + -other
+
+    def __isub__(self, other: DimensionVector) -> DimensionVector:
+        return self - other
+
+    def __mul__(self, factor: int) -> DimensionVector:
         return DimensionVector(map(lambda x: factor * x, self))
 
-    def __rmul__(self, factor: int) -> DimensionVector:  # type: ignore[override]
+    def __rmul__(self, factor: int) -> DimensionVector:
+        return self * factor
+
+    def __imul__(self, factor: int) -> DimensionVector:
         return self * factor
 
     def __truediv__(self, divisor: int) -> DimensionVector:
         return DimensionVector(map(lambda x: x // divisor, self))
 
     def __floordiv__(self, other: DimensionVector) -> int:
-        assert not other.is_zero(), "Cannot divide by zero vector!"
+        assert len(self) == len(other), "Both dimension vectors must have the same length!"
+        assert not other.is_zero, "Cannot divide by zero vector!"
         eligible_pairs = filter(lambda x: x[1] != 0, zip(self, other))
         quotients = map(lambda x: x[0] // x[1], eligible_pairs)
         return min(quotients)
@@ -55,13 +79,7 @@ class DimensionVector(tuple):
         return quotient, self - quotient * other
 
     def __repr__(self) -> str:
-        return f"d({','.join(map(lambda x: str(x), self))})"
-
-    def copy(self) -> DimensionVector:
-        return DimensionVector((x for x in self))
-
-    def is_zero(self) -> bool:
-        return all(map(lambda x: x == 0, self))
+        return repr(tuple(self))
 
     def __lshift__(self, other: DimensionVector) -> bool:
         """
@@ -70,6 +88,7 @@ class DimensionVector(tuple):
 
         Note: d << e implies d < e
         """
+        assert len(self) == len(other), "Both dimension vectors must have the same length!"
         return all(map(lambda x: x[0] <= x[1], zip(self, other))) and self != other
 
     def __rshift__(self, other: DimensionVector) -> bool:
@@ -79,4 +98,19 @@ class DimensionVector(tuple):
 
         Note: d >> e implies d > e
         """
+        assert len(self) == len(other), "Both dimension vectors must have the same length!"
         return all(map(lambda x: x[0] >= x[1], zip(self, other))) and self != other
+
+    def __eq__(self, other: DimensionVector) -> bool:
+        assert len(self) == len(other), "Both dimension vectors must have the same length!"
+        return all(map(lambda x: x[0] == x[1], zip(self, other)))
+
+    def __lt__(self, other: DimensionVector) -> bool:
+        assert len(self) == len(other), "Both dimension vectors must have the same length!"
+        for x, y in zip(self, other):
+            if x == y:
+                continue
+            return x < y
+
+    def __le__(self, other: DimensionVector) -> bool:
+        return self < other or self == other

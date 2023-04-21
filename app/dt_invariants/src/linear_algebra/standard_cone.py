@@ -17,7 +17,7 @@ class StandardCone(Cone):
             """
             returns the maximum of the finite set { e | e < d and e <<= upper_bound } with respect to <
             """
-            assert not d.is_zero(), "Cannot make zero vector smaller"
+            assert not d.is_zero, "Cannot make zero vector smaller"
             predecessor: list = list(d)
             for idx, x in enumerate(d):
                 if upper_bound[idx] < x:
