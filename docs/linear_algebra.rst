@@ -6,3 +6,4 @@ Linear Algebra
 
    dimension_vector
    phase 
+   standard_cone
