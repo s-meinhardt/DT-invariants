@@ -17,9 +17,8 @@ class StandardCone(Cone):
     rank: int
         The rank of the lattice containing the standard cone.
 
-    name: str
-        On optional name for the standard cone which defaults to the
-        presentation of the standard cone instance.
+    name: Optional[str]
+        On optional name for the standard cone.
 
     Attributes
     ----------
