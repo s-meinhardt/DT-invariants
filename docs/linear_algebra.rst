@@ -6,4 +6,6 @@ Linear Algebra
 
    dimension_vector
    phase 
+   cone
    standard_cone
+   subcone
