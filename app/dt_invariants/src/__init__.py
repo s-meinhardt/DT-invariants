@@ -7,6 +7,7 @@ from .linear_algebra.dimension_vector import DimensionVector  # noqa: F401
 from .linear_algebra.phase import Phase  # noqa: F401
 from .linear_algebra.pairing import Pairing  # noqa: F401
 from .linear_algebra.standard_cone import StandardCone  # noqa: F401
+from .linear_algebra.subcone import Subcone  # noqa: F401
 from .motives.dt_invariant import DTInvariant  # noqa: F401
 from .motives.exp import Exp  # noqa: F401
 from .motives.gl import GL  # noqa: F401
