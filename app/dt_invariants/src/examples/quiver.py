@@ -79,10 +79,3 @@ class Quiver:
         )
     if not isinstance(self.name, str):
       raise ValueError("The name of the quiver must be a string.")
-
-
-# antisymmetrized Euler pairing of quiver reps
-# chi_matrix = quiver.chi.coeff_matrix
-# matrix = {(i, j): v - chi_matrix.get((j, i), 0) for (i, j), v in chi_matrix.items()}
-# matrix_tr = {(j, i): chi_matrix.get((j, i), 0) - v for (i, j), v in chi_matrix.items()}
-# euler_pairing = Pairing(rank=quiver.num_vertices, coeff_matrix={**matrix, **matrix_tr})
